@@ -1,0 +1,18 @@
+
+create db:
+use sharddemo
+
+show tables:
+show collections
+
+create collection:
+db.createCollection("movies")
+
+check if its sharded:
+db.movies2.getShardDistribution()
+
+shard it:
+sh.shardCollection("sharddemo.movies2", {"title": "hashed"})
+sh.enableSharding("sharddemo")
+
+db.movies2.getShardDistribution()
